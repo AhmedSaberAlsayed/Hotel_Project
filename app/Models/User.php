@@ -23,6 +23,8 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
+        'mobile',
+        
     ];
 
     /**
@@ -34,6 +36,10 @@ class User extends Authenticatable implements JWTSubject
         'password',
         'remember_token',
     ];
+    public function booking()
+    {
+        return $this->hasMany(Booking::class,);        
+    }
 
     /**
      * The attributes that should be cast.

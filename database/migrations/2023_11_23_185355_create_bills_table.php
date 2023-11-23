@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
-            $table->double('total_amount');
+            $table->string('payment_method');
+            $table->unsignedBigInteger('book_id');
+            $table->foreign('book_id')->references('id')->on('bookings')->onDelete('CASCADE');
             $table->dateTime('date_from');
             $table->dateTime('date_to');
-            $table->string('payment_method');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->timestamps();
