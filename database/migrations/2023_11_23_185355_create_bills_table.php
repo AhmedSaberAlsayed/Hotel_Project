@@ -18,8 +18,7 @@ return new class extends Migration
             $table->dateTime('date_to');
             $table->string('payment_method');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('');
-
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->timestamps();
         });
     }
