@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('room_number');
             $table->enum('room_type',['single','Double','King','Twin']);
+            $table->enum('room_availability',[0,1]);
             $table->integer('room_cost');
-            $table->integer('room_availability');
             $table->timestamps();
         });
     }

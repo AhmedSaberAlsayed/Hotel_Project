@@ -10,7 +10,7 @@ class services extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'describtion	',
+        'describtion',
         'service_cost',
     ];
     protected $hidden = [
