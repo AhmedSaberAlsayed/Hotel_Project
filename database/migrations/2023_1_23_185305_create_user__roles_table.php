@@ -13,15 +13,12 @@ return new class extends Migration
     {
         Schema::create('user__roles', function (Blueprint $table) {
             $table->id();
+            $table->enum('role_type',['admin','employee','client']);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
-            $table->string('admin')->nullable();
-            $table->string('employee')->nullable();
-            $table->string('client')->nullable();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

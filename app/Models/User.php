@@ -40,6 +40,18 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(Booking::class,);        
     }
+    public function roles()
+    {
+        return $this->hasMany(User_Role::class,);        
+    }
+
+
+    public function hasRole()
+    {
+        return $this->roles->contains('role_type','admin');
+    }
+
+
 
     /**
      * The attributes that should be cast.

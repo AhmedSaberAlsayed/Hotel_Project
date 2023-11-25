@@ -22,9 +22,7 @@ class RoomsController extends Controller
             'room_cost'=> $storerequest->room_cost,
             'room_availability'=> $storerequest->room_availability,
         ]);
-        session()->flash('done','department deleted');
-
-        return redirect()->route('show.room')->with("success","employee added sucssesfuly");
+        return redirect()->route('show.room');
 }
 public function show(Request $request){
     $Rooms= Room::get();

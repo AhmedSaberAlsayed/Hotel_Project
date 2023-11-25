@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashbord\BooksController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashbord\RoomsController;
@@ -21,7 +22,6 @@ use App\Http\Controllers\Dashbord\ServicesController;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -31,7 +31,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-// ##############################start Room Routes#######################################
+
+Route::middleware(['auth','Admin'])->group(function () {
+    // Your admin routes here
+    // ##############################start Room Routes#######################################
 Route::get('create/room',[RoomsController::class, 'create'])->name('create.room');
 Route::post('store/room',[RoomsController::class,'store'])->name('store.room');
 Route::get('show/room',[RoomsController::class,'show'])->name('show.room');
@@ -43,9 +46,16 @@ Route::post('update/room/{id}',[RoomsController::class,'update'])->name('update.
 // #########################     start services Routes           #######################################
 Route::get('create/services',[ServicesController::class, 'create'])->name('create.services');
 Route::post('store/services',[ServicesController::class,'store'])->name('store.services');
-Route::get('show/room',[ServicesController::class,'show'])->name('show.services');
+Route::get('show/services',[ServicesController::class,'show'])->name('show.services');
 Route::post('delete/services/{services_id}',[ServicesController::class,'delete'])->name('delete.services');
 Route::get('edit/services/{services_id}',[ServicesController::class,'edit'])->name('edit.services');
 Route::post('update/services/{id}',[ServicesController::class,'update'])->name('update.services');
-// ############################  end services Routes   #######################################
+// ############################  end services Routes   ##############################
+
+// #########################     start Booking Routes           #######################################
+
+Route::get('index/Booking',[BooksController::class,'index'])->name('index.Booking');
+// #########################     end Booking Routes           #######################################
+});
+#########
 require __DIR__.'/auth.php';
