@@ -21,6 +21,7 @@
         @foreach ($Bookings as $Booking)
         <tr>
             <td>{{ $Booking->id }}</td>
+            <td><img src="https://drive.google.com/file/d/1tULdulr9z9R3-jTCppL7tejbhVHQtysd/view?usp=drive_link" alt=""></td>
             <td>{{ $Booking->user_id  }}</td>
             <td>{{ $Booking->room_id }}</td>
             <td>{{ $Booking->services_id }}</td>
@@ -33,13 +34,15 @@
                     @csrf
                     <input type="hidden" name="Booking_id" value="{{ $Booking->id }}">
                     <button type="submit">Delete</button>
-                </form> 
-            </td> 
+                </form>
+            </td>
             <td>
-                <a href="{{ route('edit.Booking', $Booking->id ) }}">edit</a> 
+                <a href="{{ route('edit.Booking', $Booking->id ) }}">edit</a>
             </td>
         </tr>
         @endforeach
     </table>
+    <img src="https://drive.google.com/file/d/1tULdulr9z9R3-jTCppL7tejbhVHQtysd/view" alt="img from drive">
+
 </body>
 </html>

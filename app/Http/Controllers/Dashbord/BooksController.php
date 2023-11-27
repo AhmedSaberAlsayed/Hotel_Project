@@ -10,6 +10,7 @@ class BooksController extends Controller
 {
     public function index(Request $request){
         $Bookings= Booking::get();
-        return view('Dashbord.Booking.show',compact('Bookings')) ;
+        return view('Dashbord.Booking.index',compact('Bookings')) ;
+
     }
 }

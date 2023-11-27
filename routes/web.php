@@ -32,8 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth','Admin'])->group(function () {
-    // Your admin routes here
+// #########################   Your admin routes here  ###################################
+// Route::middleware(['auth','Admin'])->group(function () {
     // ##############################start Room Routes#######################################
 Route::get('create/room',[RoomsController::class, 'create'])->name('create.room');
 Route::post('store/room',[RoomsController::class,'store'])->name('store.room');
@@ -56,6 +56,6 @@ Route::post('update/services/{id}',[ServicesController::class,'update'])->name('
 
 Route::get('index/Booking',[BooksController::class,'index'])->name('index.Booking');
 // #########################     end Booking Routes           #######################################
-});
-#########
+// });
+
 require __DIR__.'/auth.php';
